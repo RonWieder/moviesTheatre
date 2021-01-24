@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="main mt-sm-5">
+    <div class="row justify-content-end mb-2">
+      <button type="button"
+              class="btn btn-dark"
+              routerLink="/movies">
+        back
+      </button>
+
+    </div>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-3">
+          <img [src]="[movie.largeimage]">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <p class="card-text">{{movie.synopsis}}</p>
+            <p class="card-text"
+               *ngIf="movie.rating">
+              Rating:<span>{{movie.rating}}</span>/10
+            <p class="card-text"
+               *ngIf="movie.released">Released at: {{movie.released}}</p>
+            <p class="card-text"
+               *ngIf="movie.runtime"><small class="text-muted">runtime: <b>{{movie.runtime}}</b></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

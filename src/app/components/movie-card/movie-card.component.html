@@ -1,0 +1,27 @@
+<div class="card-view"
+     [routerLink]="movie.id">
+
+  <div class="card-header"
+       [ngStyle]="{ 'background-image': 'url(' + movie.image + ')'}"
+       [style.background-size]="'cover'">
+  </div>
+
+  <div class="card-movie-content">
+    <div class="card-movie-content-head">
+      <a href="#">
+        <h3 class="card-movie-title"></h3>
+      </a>
+      <div class="title">{{movie.title}}</div>
+    </div>
+    <div class="card-movie-info">
+      <div class="movie-running-time">
+        <label>Released at</label>
+        <span>{{movie.released}}</span>
+      </div>
+      <div class="movie-running-time">
+        <label>Running time</label>
+        <span>{{movie.runtime}}</span>
+      </div>
+    </div>
+  </div>
+</div>
