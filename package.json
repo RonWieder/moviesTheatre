@@ -6,6 +6,7 @@
     "start": "ng serve",
     "server": "node ./server/src/server.js",
     "build": "ng build",
+    "optibuild": "ng build --prod --aot=true --buildOptimizer=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

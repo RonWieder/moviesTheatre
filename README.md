@@ -11,4 +11,4 @@ Hope you'll enjoy the app :)
 
 ## Compiled code
 
-An optimized, minified, production ready version of the code can be found in the /public directory.
+An optimized, minified, production ready (which was built using a script I added, that makes use of some of angular cli optimization build process flags) version of the code can be found in the /public directory.
