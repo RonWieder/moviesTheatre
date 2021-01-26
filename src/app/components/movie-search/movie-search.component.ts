@@ -1,5 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Observable, fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -7,21 +7,22 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.scss']
 })
-export class MovieSearchComponent {
+export class MovieSearchComponent implements OnInit, OnDestroy {
 
   @Input() placeHolder: string;
   @Output() searchMovie: EventEmitter<string> = new EventEmitter();
   searchTerm: string;
+  eventStream: Subscription;
 
   constructor(private elementRef: ElementRef) {
-    const eventStream = fromEvent(elementRef.nativeElement, 'keyup')
-      .pipe(debounceTime(300))
-
-    eventStream.subscribe(input => this.searchMovie.emit(this.searchTerm));
   }
 
-  onChange() {
-
+  ngOnInit(): void {
+    this.eventStream = fromEvent<MouseEvent>(this.elementRef.nativeElement, 'keyup')
+      .pipe(debounceTime(300)).subscribe(input => this.searchMovie.emit(this.searchTerm));
   }
 
+  ngOnDestroy(): void {
+    this.eventStream.unsubscribe();
+  }
 }
